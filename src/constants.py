@@ -1,4 +1,4 @@
-PATH_EXCEL = r"C:\Users\aimartins\OneDrive - Parfois, SA\Desktop\N116\development\Excel Exemplo N116 dev.xlsm"
+PATH_EXCEL = r"C:\Users\aimartins\OneDrive - Parfois, SA\Desktop\N116\development\Excel Exemplo N116 development.xlsm"
 
 # Define the cells where some important values are
 NR_PROJECT = "B6"
@@ -21,3 +21,4 @@ FORMULAS_MAPPING_ARTICLES = {
     "Valor m3": "=Cubicagem c/ majoração{row}*$AD$8"
 }
 
+INPUT_CELL_TRANSPORT_TOTAL = "Transporte Total"

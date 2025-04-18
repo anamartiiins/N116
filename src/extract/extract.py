@@ -16,3 +16,4 @@ def get_excel_metadata(sheet):
     metadata["headers"] = header_start_range.expand("right").value
 
     return metadata
+
