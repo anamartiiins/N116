@@ -4,6 +4,7 @@ PATH_EXCEL = r"C:\Users\aimartins\OneDrive - Parfois, SA\Desktop\N116\developmen
 NR_PROJECT = "B6"
 CLIENT_NAME = "C6"
 LOCAL = "D6"
+PROJECT_CODE = "E6"
 HEADER_START = "B10"
 MARGIN_OBJECTIVE = "S8"
 MARKUP = "AC8"

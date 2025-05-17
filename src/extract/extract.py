@@ -1,4 +1,4 @@
-from src.constants import NR_PROJECT, CLIENT_NAME, LOCAL, MARKUP, CONTRACTED_METTER_VALUE, HEADER_START
+from src.constants import NR_PROJECT, CLIENT_NAME, LOCAL, MARKUP, CONTRACTED_METTER_VALUE, HEADER_START, PROJECT_CODE
 
 
 def get_excel_metadata(sheet):
@@ -6,6 +6,7 @@ def get_excel_metadata(sheet):
     metadata = {
         "nr_project": sheet.range(NR_PROJECT).value,
         "client_name": sheet.range(CLIENT_NAME).value,
+        "project_code": sheet.range(PROJECT_CODE).value,
         "local": sheet.range(LOCAL).value,
         "markup_factor": sheet.range(MARKUP).value,
         "contracted_m3_value": sheet.range(CONTRACTED_METTER_VALUE).value

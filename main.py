@@ -7,7 +7,7 @@ import xlwings as xw
 from src.constants import PATH_EXCEL, FORMULAS_MAPPING_ARTICLES
 from src.extract import get_excel_metadata
 from src.process import dynamic_formulas_mapping, col_idx_to_letter, insert_product_rows, insert_zone_row, \
-    add_or_delete_row_between_columns, create_supplier_sheets
+    create_supplier_sheets
 
 
 def parse_args():
@@ -46,9 +46,9 @@ def main(mode: str, extras: list):
         print(sys.argv)
 
     elif mode == "development":
-        operation = "insert_zone_row"
+        operation = "create_supplier_sheets"
         row_numbers = [15]
-        name_supplier = "MINDOL"
+        name_supplier = None
         zone_name_arg = "Quarto"
 
     # Create connection to excel
@@ -67,6 +67,7 @@ def main(mode: str, extras: list):
 
     if operation == "insert_product_rows":
         insert_product_rows(
+
             sheet=sheet,
             row_numbers=row_numbers,
             column_indices=column_indices,
@@ -80,8 +81,9 @@ def main(mode: str, extras: list):
                         zone_name=zone_name_arg)
 
     elif operation == "create_supplier_sheets":
-        create_supplier_sheets(sheet=sheet,
-                               only_supplier=name_supplier)
+        create_supplier_sheets(sheet=wb.sheets['Orçamento'],
+                                        only_supplier=name_supplier)
+
     else:
         print(f"Unknown operation: {operation}")
 
