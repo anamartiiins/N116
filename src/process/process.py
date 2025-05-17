@@ -177,7 +177,7 @@ def add_or_delete_row_between_columns(sheet, row_numbers, column_indices: dict, 
         print(f"Error occurred while modifying the row(s): {e}")
 
 
-def create_supplier_sheets(sheet: xw.Sheet, metadata: dict, only_supplier: str = None ):
+def create_supplier_sheets(sheet: xw.Sheet, only_supplier: str = None ):
     """
     Duplicate the orçamento sheet for each supplier, filtering only the rows
     where that supplier appears in any of the specified supplier columns.
@@ -334,10 +334,18 @@ def create_supplier_sheets(sheet: xw.Sheet, metadata: dict, only_supplier: str =
             formula_total = f"=O{i_row}*E{i_row}"
             new_sh.cells(i_row, cost_total_column).formula = formula_total
 
+        # Ensure the template sheet is visible before accessing it by name
+        for sht in sheet.book.sheets:
+            if sht.name == "Template_Fornecedor":
+                sht.api.Visible = True
+                template = sht
+                break
+        else:
+            raise ValueError("Sheet 'Fornecedor_Template' not found!")
 
         ## TOTALS OF CUSTS
         # Copy rows 1:5 from the Fornecedor_Template sheet
-        template = sheet.book.sheets["Fornecedor_Template"]
+        template = sheet.book.sheets["Template_Fornecedor"]
         num_rows_above = 5
         rows_to_copy = template.range(f"1:{num_rows_above}")
 
@@ -356,4 +364,4 @@ def create_supplier_sheets(sheet: xw.Sheet, metadata: dict, only_supplier: str =
         new_sh.cells(3, start_col).value = sup
         new_sh.cells(3, start_col).api.Font.Color = 0xFFFFFF
 
-
+        template.api.Visible = False
