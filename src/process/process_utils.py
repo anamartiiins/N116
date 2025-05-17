@@ -37,7 +37,7 @@ def dynamic_formulas_mapping(mapping: dict, column_indices: dict):
     return dynamic_mapping
 
 
-def find_cell_by_content(sheet, content, return_type="ref"):
+def find_by_content(sheet, content, return_type="ref"):
     """
     Finds the first cell that matches the given content and returns the desired reference format.
            sheet (xw.Sheet): Excel sheet object.
